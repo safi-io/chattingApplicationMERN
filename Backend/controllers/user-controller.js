@@ -40,5 +40,6 @@ export const registerUser = async (req, res) => {
     return res.status(201).json({ message: `User Created. ${username}` });
   } catch (error) {
     console.log(`Error in User Controller : ${error}`);
+    return res.status(400).json(`${error}`);
   }
 };
