@@ -37,7 +37,7 @@ export const registerUser = async (req, res) => {
       profilePhoto: gender === "male" ? maleProfilePhoto : femaleProfilePhoto,
     });
 
-    return res.status(204).json({ message: `User Created : ${username}]` });
+    return res.status(201).json({ message: `User Created. ${username}` });
   } catch (error) {
     console.log(`Error in User Controller : ${error}`);
   }
