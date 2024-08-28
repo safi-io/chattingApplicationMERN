@@ -1,4 +1,4 @@
-import user from "../models/user-model";
+import user from "../models/user-model.js";
 import bcrypt from "bcryptjs";
 
 export const registerUser = async (req, res) => {
@@ -36,6 +36,8 @@ export const registerUser = async (req, res) => {
       gender,
       profilePhoto: gender === "male" ? maleProfilePhoto : femaleProfilePhoto,
     });
+
+    return res.status(204).json({ message: `User Created : ${username}]` });
   } catch (error) {
     console.log(`Error in User Controller : ${error}`);
   }

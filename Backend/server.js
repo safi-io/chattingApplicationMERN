@@ -8,7 +8,7 @@ const app = express();
 dotenv.config();
 connectDB();
 
-app.use(urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/user", userRoute);
 
