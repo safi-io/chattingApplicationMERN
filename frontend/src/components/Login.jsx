@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Login() {
@@ -8,9 +8,13 @@ export default function Login() {
   });
 
   const handleMainClick = (e) => {
+    e.preventDefault();
     // API Logic
     console.log(userData);
-    e.preventDefault();
+    setUserData({
+      username: "",
+      password: "",
+    });
   };
 
   return (

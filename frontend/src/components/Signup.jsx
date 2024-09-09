@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Signup() {
   const [userData, setUserData] = useState({
@@ -14,10 +15,33 @@ export default function Signup() {
     setUserData({ ...userData, gender: e });
   };
 
-  const handleMainClick = (e) => {
-    // API Logic
-    console.log(userData)
+  const handleMainClick = async (e) => {
     e.preventDefault();
+    console.log(userData);
+
+    try {
+      const res = await axios.post(
+        `http://localhost:7000/user/register`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log("Error in Sign-up Submission.", error);
+    }
+
+    setUserData({
+      fullName: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+      gender: "",
+    });
   };
 
   return (

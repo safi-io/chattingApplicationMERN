@@ -12,7 +12,15 @@ connectDB();
 
 // Middlewares
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use("/user", userRoute);
 app.use("/message", messageRoute);
