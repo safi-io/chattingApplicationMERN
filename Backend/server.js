@@ -4,6 +4,7 @@ import connectDB from "./config/database.js";
 import userRoute from "./routes/user-route.js";
 import messageRoute from "./routes/message-route.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const PORT = process.env.PORT || 7000;
 const app = express();

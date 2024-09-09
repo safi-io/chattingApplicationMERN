@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const [userData, setUserData] = useState({
@@ -7,10 +9,31 @@ export default function Login() {
     password: "",
   });
 
-  const handleMainClick = (e) => {
+  const navigate = useNavigate();
+
+  const handleMainClick = async (e) => {
     e.preventDefault();
-    // API Logic
-    console.log(userData);
+
+    try {
+      const res = await axios.post(
+        `http://localhost:7000/user/login`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      if (res.data._id) {
+        navigate("/");
+        toast.success(`${res.data.fullName} Logged in!`);
+      }
+    } catch (error) {
+      navigate("/login");
+      toast.error(error.response.data.message);
+    }
+
     setUserData({
       username: "",
       password: "",

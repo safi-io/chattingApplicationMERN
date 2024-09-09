@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Signup() {
   const [userData, setUserData] = useState({
@@ -15,9 +16,10 @@ export default function Signup() {
     setUserData({ ...userData, gender: e });
   };
 
+  const navigate = useNavigate();
+
   const handleMainClick = async (e) => {
     e.preventDefault();
-    console.log(userData);
 
     try {
       const res = await axios.post(
@@ -30,9 +32,13 @@ export default function Signup() {
           withCredentials: true,
         }
       );
-      console.log(res);
+      if (res.data.message) {
+        navigate("/login");
+        toast.success(res.data.message);
+      }
     } catch (error) {
-      console.log("Error in Sign-up Submission.", error);
+      navigate("/register");
+      toast.error(error.response.data.message);
     }
 
     setUserData({
@@ -136,6 +142,7 @@ export default function Signup() {
                   type="radio"
                   className="radio radio-info mx-2"
                   name="gender"
+                  checked={userData.gender === "male"}
                   onChange={() => handleRadioButton("male")}
                 />
               </div>
@@ -146,6 +153,7 @@ export default function Signup() {
                   type="radio"
                   className="radio radio-info mx-2"
                   name="gender"
+                  checked={userData.gender === "female"}
                   onChange={() => handleRadioButton("female")}
                 />
               </div>
