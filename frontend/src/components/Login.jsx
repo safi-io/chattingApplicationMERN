@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "../redux/userSlice";
 
 export default function Login() {
   const [userData, setUserData] = useState({
@@ -9,6 +11,7 @@ export default function Login() {
     password: "",
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleMainClick = async (e) => {
@@ -26,6 +29,7 @@ export default function Login() {
         }
       );
       if (res.data._id) {
+        dispatch(setAuthUser(res.data));
         navigate("/");
         toast.success(`${res.data.fullName} Logged in!`);
       }

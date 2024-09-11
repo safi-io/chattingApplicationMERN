@@ -84,7 +84,12 @@ export const loginUser = async (req, res) => {
         httpOnly: true,
         sameSite: "strict",
       })
-      .json({ ...userData._doc, password: undefined });
+      .json({
+        ...userData._doc,
+        password: undefined,
+        createdAt: undefined,
+        updatedAt: undefined,
+      });
   } catch (error) {
     console.log(`Error in User Controller : ${error}`);
     return res.status(400).json(`${error}`);
