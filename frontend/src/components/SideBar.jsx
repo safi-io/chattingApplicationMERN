@@ -4,7 +4,7 @@ import OtherUsers from "./OtherUsers";
 
 export default function SideBar() {
   return (
-    <div className="border-r  border-slate-500 p-4 flex flex-col">
+    <div className="border-r  border-slate-500 p-5 flex flex-col">
       <form action="" className="flex items-center gap-1">
         <input
           type="text"
