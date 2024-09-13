@@ -52,7 +52,7 @@ export default function Signup() {
 
   return (
     <>
-      <div className="px-4 file:mx-auto">
+      <div className="px-4 file:mx-auto w-[500px]">
         <div className="w-full p-6 rounded-lg shadow-md bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
           <h1 className="text-4xl lg:text-5xl font-bold text-center text-white p-4">
             Sign-up Page
@@ -63,7 +63,7 @@ export default function Signup() {
             {/* Full Name */}
             <div>
               <label className="label pt-5">
-                <span className="text-base label-text text-gray-300">
+                <span className="text-base label-text text-white font-semibold">
                   Full Name
                 </span>
               </label>
@@ -81,7 +81,7 @@ export default function Signup() {
             {/* Username */}
             <div>
               <label className="label pt-5">
-                <span className="text-base label-text text-gray-300">
+                <span className="text-base label-text text-white font-semibold">
                   Username
                 </span>
               </label>
@@ -99,7 +99,7 @@ export default function Signup() {
             {/* Password */}
             <div>
               <label className="label pt-5">
-                <span className="text-base label-text text-gray-300">
+                <span className="text-base label-text text-white font-semibold">
                   Password
                 </span>
               </label>
@@ -117,7 +117,7 @@ export default function Signup() {
             {/* Confirm Password */}
             <div>
               <label className="label pt-5">
-                <span className="text-base label-text text-gray-300">
+                <span className="text-base label-text text-white font-semibold">
                   Confirm Password
                 </span>
               </label>
@@ -159,10 +159,10 @@ export default function Signup() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center mt-2">
+            <div className="flex items-center justify-center mt-2 text-white font-semibold">
               <Link to="/login">
                 Already Have an account?{" "}
-                <span className="text-gray-200">Login</span>
+                <span className="text-white font-bold underline">Login</span>
               </Link>
             </div>
 

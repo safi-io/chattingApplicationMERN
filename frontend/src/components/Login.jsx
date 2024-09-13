@@ -46,7 +46,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="px-4 file:mx-auto">
+      <div className="px-4 file:mx-auto w-[500px]">
         <div className="w-full p-6 rounded-lg shadow-md bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
           <h1 className="text-4xl lg:text-5xl font-bold text-center text-white p-4">
             Log-in Page
@@ -57,7 +57,7 @@ export default function Login() {
             {/* Username */}
             <div>
               <label className="label pt-5">
-                <span className="text-base label-text text-gray-300">
+                <span className="text-base label-text text-white font-semibold">
                   Username
                 </span>
               </label>
@@ -75,7 +75,7 @@ export default function Login() {
             {/* Password */}
             <div>
               <label className="label pt-5">
-                <span className="text-base label-text text-gray-300">
+                <span className="text-base label-text text-white font-semibold">
                   Password
                 </span>
               </label>
@@ -90,16 +90,16 @@ export default function Login() {
               />
             </div>
 
-            <div className="flex items-center justify-center mt-4">
+            <div className="flex items-center justify-center mt-4 text-white font-semibold">
               <Link to="/register">
                 Want to create Account?{" "}
-                <span className="text-gray-200">Sign-up</span>
+                <span className="text-white font-bold underline">Sign-up</span>
               </Link>
             </div>
 
             <div>
               <button
-                className="btn btn-block btn-md mt-2 p-2 text-xl text-white border border-slate-700"
+                className="btn btn-block btn-md mt-2 p-2 text-xl border border-slate-700"
                 type="submit"
               >
                 Login

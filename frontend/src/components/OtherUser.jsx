@@ -21,7 +21,7 @@ export default function OtherUser() {
         </div>
         {/* Name Div Ending */}
       </div>
-      <div className="divider my-0 py-2 mt-1"></div>
+      <div className="bg-zinc-700 h-[.1px] m-2"></div>
     </div>
   );
 }
