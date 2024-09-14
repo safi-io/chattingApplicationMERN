@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function OtherUser() {
+export default function OtherUser(props) {
+  const user = props.user;
   return (
     <div>
       <div className="flex items-center gap-2 cursor-pointer rounded-md p-2 hover:bg-slate-500">
@@ -8,8 +9,8 @@ export default function OtherUser() {
         <div className="avatar online">
           <div className="w-12 rounded-full">
             <img
-              src="https://img.freepik.com/premium-vector/man-avatar-profile-round-icon_24640-14044.jpg?w=740"
-              alt="default-image"
+              src={user.profilePhoto}
+              alt="user-profile-image"
             />
           </div>
         </div>
@@ -17,7 +18,7 @@ export default function OtherUser() {
 
         {/* Name Div Starting */}
         <div className="flex flex-col flex-1">
-          <p className="text-white">Safi</p>
+          <p className="text-white">{user.fullName}</p>
         </div>
         {/* Name Div Ending */}
       </div>
