@@ -34,7 +34,7 @@ export const sendMessage = async (req, res) => {
     await getConversation.save();
 
     return res.status(200).json({
-      status: "Message sent",
+      newMessage,
     });
 
     // SOCKET IO
