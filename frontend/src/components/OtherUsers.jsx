@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import useGetOtherUsers from "../hooks/useGetOtherUsers";
 
 export default function OtherUsers() {
+  // Custom Hook Called
   useGetOtherUsers();
   const { otherUsers } = useSelector((store) => store.user);
 
