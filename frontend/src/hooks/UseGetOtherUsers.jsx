@@ -3,7 +3,7 @@ import axios from "axios";
 import {useDispatch} from 'react-redux'
 import { setOtherUsers } from "../redux/userSlice";
 
-export default function useGetOtherUsers() {
+export default function UseGetOtherUsers() {
   const dispatch = useDispatch();
 
   useEffect(() => {

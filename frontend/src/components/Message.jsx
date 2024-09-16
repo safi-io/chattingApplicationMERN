@@ -1,9 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export default function Message() {
+export default function Message({ message }) {
+  const { authUser } = useSelector((store) => store.user);
+  console.log(authUser);
+
   return (
     <div className="text-white">
-      <div className="chat chat-end">
+      <div
+        className={`chat ${
+          authUser?._id === message?.senderId ? "chat-end" : "chat-start"
+        } `}
+      >
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">
             <img
@@ -15,7 +23,7 @@ export default function Message() {
         <div className="chat-header">
           <time className="text-xs opacity-50 text-zinc-50">12:45</time>
         </div>
-        <div className="chat-bubble text-white">You were the Chosen One!</div>
+        <div className="chat-bubble text-white">{message?.message}</div>
       </div>
     </div>
   );

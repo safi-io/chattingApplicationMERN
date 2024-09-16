@@ -1,9 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../redux/userSlice";
 
 export default function OtherUser({ user }) {
+  // To highlight Current User
   const dispatch = useDispatch();
+
+  const { selectedUser } = useSelector((store) => store.user);
 
   const selectedUserHandler = (user) => {
     dispatch(setSelectedUser(user));
@@ -13,7 +16,9 @@ export default function OtherUser({ user }) {
     <>
       <div
         onClick={() => selectedUserHandler(user)}
-        className="flex items-center gap-2 cursor-pointer rounded-md p-2 hover:bg-slate-500"
+        className={`  ${
+          selectedUser?._id === user?._id ? "bg-gray-500" : ""
+        }  flex items-center gap-2 cursor-pointer rounded-md p-2 hover:bg-gray-800`}
       >
         {/* Avatar Div Starting */}
         <div className="avatar online">
