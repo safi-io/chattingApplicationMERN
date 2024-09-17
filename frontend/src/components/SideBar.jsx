@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setOtherUsers } from "../redux/userSlice";
+import { setAuthUser, setOtherUsers } from "../redux/userSlice";
 import OtherUsers from "./OtherUsers";
 
 export default function SideBar() {
@@ -25,6 +25,7 @@ export default function SideBar() {
       });
       navigate("/login");
       toast.success("User Logged Out.");
+      dispatch(setAuthUser(null));
     } catch (error) {
       toast.error("Unable to Logged Out.");
     }

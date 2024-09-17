@@ -6,7 +6,9 @@ export default function OtherUser({ user }) {
   // To highlight Current User
   const dispatch = useDispatch();
 
-  const { selectedUser } = useSelector((store) => store.user);
+  const { selectedUser, onlineUsers } = useSelector((store) => store.user);
+
+  const isOnline = onlineUsers?.includes(user._id);
 
   const selectedUserHandler = (user) => {
     dispatch(setSelectedUser(user));
@@ -21,7 +23,7 @@ export default function OtherUser({ user }) {
         }  flex items-center gap-2 cursor-pointer rounded-md p-2 hover:bg-gray-800`}
       >
         {/* Avatar Div Starting */}
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
             <img src={user.profilePhoto} alt="user-profile-image" />
           </div>
