@@ -20,7 +20,7 @@ const userSlice = createSlice({
     },
     setOnlineUsers: (state, action) => {
       state.onlineUsers = action.payload;
-    },socket
+    },
   },
 });
 
