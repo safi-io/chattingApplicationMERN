@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function Message({ message }) {
-  const { authUser } = useSelector((store) => store.user);
-  const { selectedUser } = useSelector((store) => store.user);
+  const scroll = useRef();
+
+  useEffect(() => {
+    scroll.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
+  const { authUser,  selectedUser} = useSelector((store) => store.user);
 
   // Checking Message is from Auth User or not
 
@@ -13,7 +18,7 @@ export default function Message({ message }) {
   }
 
   return (
-    <div className="text-white">
+    <div className="text-white" ref={scroll}>
       <div className={`chat ${isMessageFromAuth ? "chat-end" : "chat-start"} `}>
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">

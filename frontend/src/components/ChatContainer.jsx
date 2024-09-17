@@ -4,11 +4,11 @@ import Messages from "./Messages";
 import { useSelector } from "react-redux";
 
 export default function ChatContainer() {
-  const { selectedUser } = useSelector((store) => store.user);
+  const { selectedUser, authUser } = useSelector((store) => store.user);
 
   return (
     <>
-      {selectedUser ? (
+      {selectedUser != null ? (
         <div className="flex flex-col">
           <div className="flex items-center gap-2 p-[9px] w-[60vw] bg-gray-800">
             {/* Avatar Div Starting */}
@@ -35,7 +35,12 @@ export default function ChatContainer() {
           <SendInput />
         </div>
       ) : (
-        ""
+        <>
+          <h1 className="flex items-center justify-center text-white text-3xl font-bold p-10">
+            Hi {authUser?.username},
+            Start a Conversation by Clicking on any User.
+          </h1>
+        </>
       )}
     </>
   );

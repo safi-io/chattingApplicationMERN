@@ -3,21 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { setAuthUser } from "../redux/userSlice";
+import {
+  setAuthUser,
+  setOtherUsers,
+  setSelectedUser,
+} from "../redux/userSlice";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     username: "",
     password: "",
   });
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const handleMainClick = async (e) => {
     e.preventDefault();
 
     try {
+      dispatch(setOtherUsers(null));
+      dispatch(setSelectedUser(null));
       const res = await axios.post(
         `http://localhost:7000/user/login`,
         userData,
