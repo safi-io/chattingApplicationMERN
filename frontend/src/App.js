@@ -36,7 +36,7 @@ export default function App() {
         query: { userId: authUser._id },
       });
 
-      dispatch(setSocket(socket));
+      dispatch(setSocket(socket)); // maybe remove if needed
 
       socket.on("getOnlineUsers", (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers));

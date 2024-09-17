@@ -20,7 +20,6 @@ const userSocketMap = {};
 
 // Handle Socket.IO connections
 io.on("connection", (socket) => {
-  console.log("User connected with socket ID:", socket.id);
   const userId = socket.handshake.query.userId;
   if (userId !== undefined) {
     userSocketMap[userId] = socket.id;
@@ -29,7 +28,6 @@ io.on("connection", (socket) => {
   io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
   socket.on("disconnect", () => {
-    console.log("user disconnect");
     delete userSocketMap[userId];
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
   });
