@@ -35,8 +35,7 @@ export default function App() {
       const socket = io("http://localhost:7000", {
         query: { userId: authUser._id },
       });
-
-      // dispatch(setSocket(socket)); // maybe remove if needed
+      dispatch(setSocket(socket)); // maybe remove if needed
 
       socket.on("getOnlineUsers", (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers));

@@ -13,8 +13,8 @@ const UseGetMessages = () => {
         axios.defaults.withCredentials = true;
         const res = await axios.post(
           `http://localhost:7000/message/${selectedUser?._id}`
-        )
-        dispatch(setMessages(res.data))
+        );
+        dispatch(setMessages(res.data));
       } catch (error) {
         console.log(error);
       }

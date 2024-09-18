@@ -2,10 +2,14 @@ import React from "react";
 import Message from "./Message";
 import UseGetMessages from "../hooks/UseGetMessages";
 import { useSelector } from "react-redux";
+import useGetRealTimeMessage from "../hooks/useGetRealTimeMessage";
 
 export default function Messages() {
   UseGetMessages();
+  useGetRealTimeMessage();
+
   const { messages } = useSelector((store) => store.message);
+  console.log(messages);
   return (
     <>
       {messages ? (
@@ -15,7 +19,9 @@ export default function Messages() {
           })}
         </div>
       ) : (
-        <h1 className="flex-1 flex items-center justify-center text-white text-3xl font-black p-10">No Previous Chats with this User.</h1>
+        <h1 className="flex-1 flex items-center justify-center text-white text-3xl font-black p-10">
+          No Previous Chats with this User.
+        </h1>
       )}
     </>
   );
