@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Signup from "./components/Signup";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
@@ -36,13 +36,14 @@ export default function App() {
         query: { userId: authUser._id },
       });
 
-      dispatch(setSocket(socket)); // maybe remove if needed
+      // dispatch(setSocket(socket)); // maybe remove if needed
 
       socket.on("getOnlineUsers", (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers));
       });
       return () => socket.close();
     }
+    // eslint-disable-next-line
   }, [authUser]);
 
   return (

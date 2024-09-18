@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     message: messageReducer,
-    spcket: socketReducer,
+    socket: socketReducer,
   },
 });
 
