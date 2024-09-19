@@ -8,7 +8,7 @@ export default function Message({ message }) {
     scroll.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
 
-  const { authUser,  selectedUser} = useSelector((store) => store.user);
+  const { authUser, selectedUser } = useSelector((store) => store.user);
 
   // Checking Message is from Auth User or not
 
@@ -43,7 +43,13 @@ export default function Message({ message }) {
             })}
           </time>
         </div>
-        <div className="chat-bubble text-white">{message?.message}</div>
+        <div
+          className={`chat-bubble text-white ${
+            !isMessageFromAuth ? "bg-white text-black" : ""
+          }`}
+        >
+          {message?.message}
+        </div>
       </div>
     </div>
   );

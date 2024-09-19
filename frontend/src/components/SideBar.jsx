@@ -17,12 +17,11 @@ export default function SideBar() {
 
   // Getting Same Data from Redux Two Times, Because No re-renders in Second One.
   const { otherUsers } = useSelector((store) => store.user);
-  const { messages } = useSelector((store) => store.message);
   const allUsers = useSelector((store) => store.user.otherUsers);
 
   const logoutUser = async () => {
     try {
-      const res = await axios.post(`http://localhost:7000/user/logout`, {
+      await axios.post(`http://localhost:7000/user/logout`, {
         withCredentials: true,
       });
       navigate("/login");
