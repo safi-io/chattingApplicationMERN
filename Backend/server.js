@@ -28,4 +28,4 @@ app.use("/user", userRoute);
 app.use("/message", messageRoute);
 
 // Start the server using the server created in socket.js
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT);
