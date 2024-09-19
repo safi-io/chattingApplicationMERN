@@ -9,7 +9,6 @@ export default function Messages() {
   useGetRealTimeMessage();
 
   const { messages } = useSelector((store) => store.message);
-  console.log(messages);
   return (
     <>
       {messages ? (
