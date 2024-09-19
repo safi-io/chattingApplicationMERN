@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthUser, setOtherUsers } from "../redux/userSlice";
 import OtherUsers from "./OtherUsers";
+import { setMessages } from "../redux/messageSlice";
 
 export default function SideBar() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function SideBar() {
 
   // Getting Same Data from Redux Two Times, Because No re-renders in Second One.
   const { otherUsers } = useSelector((store) => store.user);
+  const { messages } = useSelector((store) => store.message);
   const allUsers = useSelector((store) => store.user.otherUsers);
 
   const logoutUser = async () => {
@@ -26,6 +28,7 @@ export default function SideBar() {
       navigate("/login");
       toast.success("User Logged Out.");
       dispatch(setAuthUser(null));
+      dispatch(setMessages(null));
     } catch (error) {
       toast.error("Unable to Logged Out.");
     }
