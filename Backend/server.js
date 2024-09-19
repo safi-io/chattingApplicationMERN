@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDB from "./database.js";
+import mongoose from "mongoose";
 import userRoute from "./routes/user-route.js";
 import messageRoute from "./routes/message-route.js";
 import cookieParser from "cookie-parser";
@@ -9,7 +9,11 @@ import { app, server } from "./socket/socket.js"; // Import the app and server
 
 const PORT = process.env.PORT || 7000;
 dotenv.config();
-connectDB();
+
+await mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("DB Connected"))
+  .catch((err) => console.log("DB not connected", err));
 
 // Middlewares
 app.use(cookieParser());
