@@ -44,8 +44,8 @@ export default function Message({ message }) {
           </time>
         </div>
         <div
-          className={`chat-bubble text-white ${
-            !isMessageFromAuth ? "bg-white text-black" : ""
+          className={`chat-bubble ${
+            !isMessageFromAuth ? "bg-white text-black " : "text-white"
           }`}
         >
           {message?.message}
