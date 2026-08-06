@@ -26,9 +26,8 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Profile Photo
-    const maleProfilePhoto = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-    const femaleProfilePhoto = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+    const maleProfilePhoto = `https://api.dicebear.com/9.x/avataaars/svg?seed=${username}&gender=male`;
+    const femaleProfilePhoto = `https://api.dicebear.com/9.x/avataaars/svg?seed=${username}&gender=female`;
 
     await user.create({
       username,
@@ -73,7 +72,7 @@ export const loginUser = async (req, res) => {
       userId: userData._id,
     };
 
-    const token = jwt.sign(tokenData, process.env.JWT_SECRET, {
+    const token = jwt.sign(tokenData, "safi", {
       expiresIn: "1d",
     });
 
